@@ -29,8 +29,8 @@ public class LietouJobProcessor implements PageProcessor {
         jobInfo.setCompany(page.getHtml().xpath("//div[@class=\"main-view\"]/h2").replace("<sup>.*</sup>","").toString());
         jobInfo.setSalary(page.getHtml().xpath("//div[@class='salary']//em").toString());
         jobInfo.setSource("lietou.com");
-        jobInfo.setDescription(page.getHtml().regex("岗位职责：(.*?)岗位要求：").toString());
-        jobInfo.setRequirement(page.getHtml().regex("岗位要求：(.*?)薪酬福利：").toString());
+        jobInfo.setDescription(page.getHtml().regex("岗位职责：(.*?)岗位要求：").replace("\\s*<[^<>]+>\\s*","").toString());
+        jobInfo.setRequirement(page.getHtml().regex("岗位要求：(.*?)薪酬福利：").replace("\\s*<[^<>]+>\\s*","").toString());
         jobInfo.setUrl(page.getUrl().toString());
         page.<JobInfo>setExtra(jobInfo);
     }
