@@ -15,9 +15,9 @@
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
           destroy-method="close">
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-        <property name="url" value="jdbc:mysql://127.0.0.1:3306/Jobs" />
-        <property name="username" value="test" />
-        <property name="password" value="test" />
+        <property name="url" value="jdbc:mysql://127.0.0.1:3306/JobHunter?characterEncoding=UTF-8" />
+        <property name="username" value="jobinfo" />
+        <property name="password" value="test123" />
     </bean>
 
 </beans>

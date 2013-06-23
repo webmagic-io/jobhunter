@@ -8,8 +8,8 @@ import us.codecraft.jobhunter.model.JobInfo;
  *         Date: 13-6-23
  *         Time: 下午4:27
  */
-public interface JobDetailDAO {
+public interface JobInfoDAO {
 
-    @Insert("insert into JobInfo (`title`,`salary`,`company`,`description`,`requirement`,`source`,`url`) values (#{title},#{salary},#{company},#{description},#{requirement},#{source},#{url})")
+    @Insert("insert into JobInfo (`title`,`salary`,`company`,`description`,`requirement`,`source`,`url`,`urlMd5`) values (#{title},#{salary},#{company},#{description},#{requirement},#{source},#{url},#{urlMd5})")
     public int add(JobInfo jobInfo);
 }

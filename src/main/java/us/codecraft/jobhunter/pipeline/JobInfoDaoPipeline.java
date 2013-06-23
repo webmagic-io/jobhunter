@@ -1,7 +1,7 @@
 package us.codecraft.jobhunter.pipeline;
 
 import org.springframework.stereotype.Component;
-import us.codecraft.jobhunter.dao.JobDetailDAO;
+import us.codecraft.jobhunter.dao.JobInfoDAO;
 import us.codecraft.jobhunter.model.JobInfo;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Task;
@@ -15,13 +15,19 @@ import javax.annotation.Resource;
  *         Time: 下午8:56
  */
 @Component("JobInfoDaoPipeline")
-public class JobInfoDaoPipeline implements Pipeline{
+public class JobInfoDaoPipeline implements Pipeline {
 
     @Resource
-    private JobDetailDAO jobDetailDAO;
+    private JobInfoDAO jobInfoDAO;
 
     @Override
     public void process(Page page, Task task) {
-        jobDetailDAO.add((JobInfo)page.getExtra());
+        if (!page.isSkip()) {
+            try {
+                jobInfoDAO.add((JobInfo) page.getExtra());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
