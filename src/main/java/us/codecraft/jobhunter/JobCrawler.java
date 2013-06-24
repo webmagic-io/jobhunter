@@ -23,6 +23,7 @@ public class JobCrawler {
 
     public void crawl() {
         Spider.create(new LietouJobProcessor()).thread(5).pipeline(jobInfoDaoPipeline).runAsync();
+        System.out.println("yes!");
     }
 
     public static void main(String[] args) {
