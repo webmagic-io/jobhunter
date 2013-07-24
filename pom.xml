@@ -19,7 +19,7 @@
     <dependencies>
         <dependency>
             <groupId>us.codecraft</groupId>
-            <version>0.0.1-SNAPSHOT</version>
+            <version>0.1.0</version>
             <artifactId>webmagic-core</artifactId>
         </dependency>
         <dependency>
