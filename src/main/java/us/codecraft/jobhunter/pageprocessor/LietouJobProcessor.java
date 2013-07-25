@@ -18,10 +18,10 @@ public class LietouJobProcessor implements PageProcessor {
     @Override
     public void process(Page page) {
         final Selectable links = page.getHtml().links();
-        page.addTargetRequests(links.regex(".*sojob/\\?setdefault=true&curPage=\\d+").toStrings());
-        page.addTargetRequests(links.regex(".*a\\.lietou\\.com/\\d+/job_\\d+\\.shtml").toStrings());
+        page.addTargetRequests(links.regex(".*sojob/\\?setdefault=true&curPage=\\d+").all());
+        page.addTargetRequests(links.regex(".*a\\.lietou\\.com/\\d+/job_\\d+\\.shtml").all());
         if (!page.getUrl().toString().contains("http://a.lietou.com/")) {
-            page.setSkip(true);
+            page.getResultItems().setSkip(true);
             return;
         }
         JobInfo jobInfo = new JobInfo();
@@ -32,7 +32,7 @@ public class LietouJobProcessor implements PageProcessor {
         jobInfo.setDescription(page.getHtml().regex("岗位职责：(.*?)岗位要求：").replace("\\s*<[^<>]+>\\s*","\n").toString());
         jobInfo.setRequirement(page.getHtml().regex("岗位要求：(.*?)薪酬福利：").replace("\\s*<[^<>]+>\\s*","\n").toString());
         jobInfo.setUrl(page.getUrl().toString());
-        page.<JobInfo>setExtra(jobInfo);
+        page.putField("jobInfo",jobInfo);
     }
 
     @Override

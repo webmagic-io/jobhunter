@@ -3,7 +3,7 @@ package us.codecraft.jobhunter.pipeline;
 import org.springframework.stereotype.Component;
 import us.codecraft.jobhunter.dao.JobInfoDAO;
 import us.codecraft.jobhunter.model.JobInfo;
-import us.codecraft.webmagic.Page;
+import us.codecraft.webmagic.ResultItems;
 import us.codecraft.webmagic.Task;
 import us.codecraft.webmagic.pipeline.Pipeline;
 
@@ -21,10 +21,13 @@ public class JobInfoDaoPipeline implements Pipeline {
     private JobInfoDAO jobInfoDAO;
 
     @Override
-    public void process(Page page, Task task) {
-        if (!page.isSkip()) {
+    public void process(ResultItems resultItems, Task task) {
+        if (!resultItems.isSkip()) {
             try {
-                jobInfoDAO.add((JobInfo) page.getExtra());
+                Object o = resultItems.get("jobInfo");
+                if (o!=null){
+                    jobInfoDAO.add((JobInfo) o);
+                }
             } catch (Exception e) {
                 e.printStackTrace();
             }
