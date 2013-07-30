@@ -23,6 +23,11 @@
             <artifactId>webmagic-core</artifactId>
         </dependency>
         <dependency>
+            <groupId>us.codecraft</groupId>
+            <version>0.1.0</version>
+            <artifactId>webmagic-misc</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.xerial</groupId>
             <artifactId>sqlite-jdbc</artifactId>
             <version>3.7.2</version>
