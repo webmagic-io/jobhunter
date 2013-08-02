@@ -5,7 +5,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import us.codecraft.jobhunter.model.JobInfo;
+import us.codecraft.jobhunter.model.LieTouJobInfo;
 
 import javax.annotation.Resource;
 
@@ -23,7 +23,7 @@ public class JobInfoDaoTest {
     @Ignore
     @Test
     public void test() {
-        JobInfo jobInfo = new JobInfo();
+        LieTouJobInfo jobInfo = new LieTouJobInfo();
         jobInfo.setSource("a");
         try {
             final int add = jobInfoDAO.add(jobInfo);

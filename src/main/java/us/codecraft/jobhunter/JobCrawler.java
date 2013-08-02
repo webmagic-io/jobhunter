@@ -5,8 +5,10 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
-import us.codecraft.jobhunter.pageprocessor.LietouJobProcessor;
+import us.codecraft.jobhunter.model.LieTouJobInfo;
+import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.Spider;
+import us.codecraft.webmagic.annotation.ObjectPageProcessor;
 import us.codecraft.webmagic.pipeline.Pipeline;
 
 /**
@@ -22,7 +24,7 @@ public class JobCrawler {
     private Pipeline jobInfoDaoPipeline;
 
     public void crawl() {
-        Spider.create(new LietouJobProcessor()).thread(5).pipeline(jobInfoDaoPipeline).run();
+        Spider.create(ObjectPageProcessor.create(Site.me().addStartUrl("http://www.lietou.com/sojob/?dqs=020&curPage=0"), LieTouJobInfo.class)).thread(5).run();
     }
 
     public static void main(String[] args) {
