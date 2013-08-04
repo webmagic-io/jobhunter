@@ -7,9 +7,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
 import us.codecraft.jobhunter.model.LieTouJobInfo;
 import us.codecraft.webmagic.Site;
-import us.codecraft.webmagic.Spider;
-import us.codecraft.webmagic.annotation.ObjectPageProcessor;
-import us.codecraft.webmagic.pipeline.Pipeline;
+import us.codecraft.webmagic.model.OOSpider;
+import us.codecraft.webmagic.model.PageModelPipeline;
 
 /**
  * @author code4crafer@gmail.com
@@ -21,10 +20,10 @@ public class JobCrawler {
 
     @Qualifier("JobInfoDaoPipeline")
     @Autowired
-    private Pipeline jobInfoDaoPipeline;
+    private PageModelPipeline jobInfoDaoPipeline;
 
     public void crawl() {
-        Spider.create(ObjectPageProcessor.create(Site.me().addStartUrl("http://www.lietou.com/sojob/?dqs=020&curPage=0"), LieTouJobInfo.class)).thread(5).run();
+        OOSpider.create(Site.me().addStartUrl("http://www.lietou.com/sojob/?dqs=020&curPage=0"),jobInfoDaoPipeline, LieTouJobInfo.class).thread(5).run();
     }
 
     public static void main(String[] args) {
