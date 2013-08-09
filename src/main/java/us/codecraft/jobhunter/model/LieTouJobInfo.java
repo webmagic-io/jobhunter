@@ -1,10 +1,10 @@
 package us.codecraft.jobhunter.model;
 
 import org.apache.commons.codec.digest.DigestUtils;
-import us.codecraft.webmagic.model.ExtractBy;
-import us.codecraft.webmagic.model.ExtractByUrl;
-import us.codecraft.webmagic.model.HelpUrl;
-import us.codecraft.webmagic.model.TargetUrl;
+import us.codecraft.webmagic.model.annotation.ExtractBy;
+import us.codecraft.webmagic.model.annotation.ExtractByUrl;
+import us.codecraft.webmagic.model.annotation.HelpUrl;
+import us.codecraft.webmagic.model.annotation.TargetUrl;
 
 /**
  * @author code4crafer@gmail.com
