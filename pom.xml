@@ -19,12 +19,12 @@
     <dependencies>
         <dependency>
             <groupId>us.codecraft</groupId>
-            <version>0.2.0</version>
+            <version>0.4.0</version>
             <artifactId>webmagic-core</artifactId>
         </dependency>
         <dependency>
             <groupId>us.codecraft</groupId>
-            <version>0.2.0</version>
+            <version>0.4.0</version>
             <artifactId>webmagic-extension</artifactId>
         </dependency>
         <dependency>

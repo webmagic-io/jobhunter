@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import us.codecraft.jobhunter.model.LieTouJobInfo;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.model.OOSpider;
-import us.codecraft.webmagic.model.PageModelPipeline;
+import us.codecraft.webmagic.pipeline.PageModelPipeline;
 
 /**
  * @author code4crafer@gmail.com
@@ -23,7 +23,7 @@ public class JobCrawler {
     private PageModelPipeline jobInfoDaoPipeline;
 
     public void crawl() {
-        OOSpider.create(Site.me().addStartUrl("http://www.lietou.com/sojob/?dqs=020&curPage=0"),jobInfoDaoPipeline, LieTouJobInfo.class).thread(5).run();
+        OOSpider.create(Site.me().setUserAgent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.57 Safari/537.36"),jobInfoDaoPipeline, LieTouJobInfo.class).addUrl("http://www.lietou.com/sojob/?dqs=020&curPage=0").thread(5).run();
     }
 
     public static void main(String[] args) {

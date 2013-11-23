@@ -1,6 +1,8 @@
 package us.codecraft.jobhunter.model;
 
 import org.apache.commons.codec.digest.DigestUtils;
+import us.codecraft.webmagic.Page;
+import us.codecraft.webmagic.model.AfterExtractor;
 import us.codecraft.webmagic.model.annotation.ExtractBy;
 import us.codecraft.webmagic.model.annotation.ExtractByUrl;
 import us.codecraft.webmagic.model.annotation.HelpUrl;
@@ -13,7 +15,7 @@ import us.codecraft.webmagic.model.annotation.TargetUrl;
  */
 @TargetUrl("http://a.lietou.com/\\d+/job_\\d+.shtml")
 @HelpUrl("*sojob/\\?setdefault=true&curPage=\\d+")
-public class LieTouJobInfo {
+public class LieTouJobInfo implements AfterExtractor {
     @ExtractBy("//div[@class=\"main-view\"]/h1")
     private String title="";
     @ExtractBy("//div[@class='salary']//em")
@@ -101,5 +103,10 @@ public class LieTouJobInfo {
                 ", source='" + source + '\'' +
                 ", url='" + url + '\'' +
                 '}';
+    }
+
+    @Override
+    public void afterProcess(Page page) {
+        System.out.println(page);
     }
 }
