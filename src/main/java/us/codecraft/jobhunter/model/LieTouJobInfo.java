@@ -13,7 +13,7 @@ import us.codecraft.webmagic.model.annotation.TargetUrl;
  *         Date: 13-6-23
  *         Time: 下午4:28
  */
-@TargetUrl("http://a.lietou.com/\\d+/job_\\d+.shtml")
+@TargetUrl("http://job.liepin.com/[\\d_]+")
 @HelpUrl("*sojob/\\?setdefault=true&curPage=\\d+")
 public class LieTouJobInfo implements AfterExtractor {
     @ExtractBy("//div[@class=\"main-view\"]/h1")
@@ -107,6 +107,5 @@ public class LieTouJobInfo implements AfterExtractor {
 
     @Override
     public void afterProcess(Page page) {
-        System.out.println(page);
     }
 }
