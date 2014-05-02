@@ -21,7 +21,6 @@ public class JobInfoDaoPipeline implements PageModelPipeline<LieTouJobInfo> {
 
     @Override
     public void process(LieTouJobInfo lieTouJobInfo, Task task) {
-        System.out.println(lieTouJobInfo);
         jobInfoDAO.add(lieTouJobInfo);
     }
 }
