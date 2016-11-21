@@ -10,6 +10,6 @@ import us.codecraft.jobhunter.model.LieTouJobInfo;
  */
 public interface JobInfoDAO {
 
-    @Insert("insert into JobInfo (`title`,`salary`,`company`,`description`,`requirement`,`source`,`url`,`urlMd5`) values (#{title},#{salary},#{company},#{description},#{requirement},#{source},#{url},#{urlMd5})")
+    @Insert("insert into JobInfo (`title`,`salary`,`company`,`description`,`source`,`url`,`urlMd5`) values (#{title},#{salary},#{company},#{description},#{source},#{url},#{urlMd5})")
     public int add(LieTouJobInfo jobInfo);
 }
