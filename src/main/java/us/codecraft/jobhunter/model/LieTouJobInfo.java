@@ -13,20 +13,18 @@ import us.codecraft.webmagic.model.annotation.TargetUrl;
  *         Date: 13-6-23
  *         Time: 下午4:28
  */
-@TargetUrl("http://job.liepin.com/[\\d_]+")
-@HelpUrl("*sojob/\\?setdefault=true&curPage=\\d+")
+@TargetUrl("https://www.liepin.com/job/*")
+@HelpUrl("https://www.liepin.com/sojob/?dqs=020&curPage=\\d+")
 public class LieTouJobInfo implements AfterExtractor {
-    @ExtractBy("//div[@class=\"main-view\"]/h1")
+    @ExtractBy("//h1/text()")
     private String title="";
-    @ExtractBy("//div[@class='salary']//em")
+    @ExtractBy("//p[@class='job-item-title']/text()")
     private String salary="";
-    @ExtractBy("//div[@class=\"main-view\"]/h2")
+    @ExtractBy("//div[@class='title-info']/h3/a/text()")
     private String company="";
-    @ExtractBy(value = "岗位职责：(.*?)岗位要求：",type = ExtractBy.Type.Regex)
+    @ExtractBy("//div[@class='content content-word']/allText()")
     private String description="";
-    @ExtractBy(value = "岗位要求：(.*?)薪酬福利：",type = ExtractBy.Type.Regex)
-    private String requirement="";
-    private String source="lietou.com";
+    private String source="liepin.com";
     @ExtractByUrl
     private String url="";
     private String urlMd5="";
@@ -54,16 +52,6 @@ public class LieTouJobInfo implements AfterExtractor {
     public void setDescription(String description) {
         if (description!=null){
             this.description = description;
-        }
-    }
-
-    public String getRequirement() {
-        return requirement;
-    }
-
-    public void setRequirement(String requirement) {
-        if (requirement!=null){
-            this.requirement = requirement;
         }
     }
 
@@ -99,7 +87,6 @@ public class LieTouJobInfo implements AfterExtractor {
                 ", salary='" + salary + '\'' +
                 ", company='" + company + '\'' +
                 ", description='" + description + '\'' +
-                ", requirement='" + requirement + '\'' +
                 ", source='" + source + '\'' +
                 ", url='" + url + '\'' +
                 '}';
